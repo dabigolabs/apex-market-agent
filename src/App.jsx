@@ -86,6 +86,26 @@ const API_REGISTRY = [
       return d.price ? `SPY @ $${parseFloat(d.price).toFixed(2)}` : null;
     }
   },
+  {
+    id: "anthropic",
+    name: "Anthropic",
+    label: "AI Analysis Engine",
+    description: "Powers Perfect Setup, chat, and all AI analysis features",
+    url: "https://console.anthropic.com",
+    signupUrl: "https://console.anthropic.com/settings/keys",
+    freeInfo: "~$0.01 per analysis — $5 free credits on signup",
+    placeholder: "sk-ant-...",
+    required: true,
+    test: async (key) => {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-api-key": key, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
+        body: JSON.stringify({ model: "claude-haiku-4-5-20251001", max_tokens: 10, messages: [{ role: "user", content: "hi" }] })
+      });
+      const d = await res.json();
+      return d.content ? "Connected ✓" : null;
+    }
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────
@@ -663,8 +683,8 @@ export default function APEX() {
         const priceCtx = Object.entries(prices).slice(0, 6).map(([s, d]) => `${s}:$${d.price}(${d.chg >= 0 ? "+" : ""}${d.chg}%)`).join(" ");
         const newsCtx = news.slice(0, 3).map(n => n.title).join("; ");
         const res = await fetch("https://api.anthropic.com/v1/messages", {
-          method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 400, system: APEX_SYSTEM, messages: [{ role: "user", content: `Live data: ${priceCtx || "markets open"}. News: ${newsCtx || "monitoring"}. ${SCAN_PROMPT}` }] })
+          method: "POST", headers: { "Content-Type": "application/json", "x-api-key": apiKeys.anthropic || "", "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
+          body: JSON.stringify({ model: "claude-haiku-4-5-20251001", max_tokens: 400, system: APEX_SYSTEM, messages: [{ role: "user", content: `Live data: ${priceCtx || "markets open"}. News: ${newsCtx || "monitoring"}. ${SCAN_PROMPT}` }] })
         });
         const d = await res.json();
         const text = d.content?.map(b => b.text || "").join("") || "";
@@ -698,7 +718,7 @@ export default function APEX() {
     content.push({ type: "text", text: `[LIVE DATA @ ${lastUpdated?.toLocaleTimeString() || "now"}]: ${priceCtx} ${fgCtx} ${fredCtx}\n[NEWS]: ${newsCtx}\n\n${t || "Analyze this chart."}` });
     try {
       const hist = messages.slice(-8).map(m => ({ role: m.role, content: m.role === "user" ? (m.image ? [{ type: "image", source: { type: "base64", media_type: m.image.mediaType, data: m.image.base64 } }, { type: "text", text: m.text }] : m.text) : m.text }));
-      const res = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, system: APEX_SYSTEM, messages: [...hist, { role: "user", content }] }) });
+      const res = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "Content-Type": "application/json", "x-api-key": apiKeys.anthropic || "", "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" }, body: JSON.stringify({ model: "claude-sonnet-4-6", max_tokens: 1000, system: APEX_SYSTEM, messages: [...hist, { role: "user", content }] }) });
       const d = await res.json();
       const reply = d.content?.map(b => b.text || "").join("") || "No response.";
       setMessages(prev => [...prev, { role: "assistant", text: reply }]);
