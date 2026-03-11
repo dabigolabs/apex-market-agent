@@ -2697,7 +2697,7 @@ export default function APEX() {
                 </div>
 
                 {/* Instance Table */}
-                {backtestResult.instances.length > 0 && (
+                              {backtestResult.instances.length > 0 && (
                   <div style={{ background: S2, border: `1px solid ${BOR}`, borderRadius: 11, padding: "12px" }}>
                     <div style={{ fontFamily: "monospace", fontSize: 8, color: "#2a4050", letterSpacing: 2, textTransform: "uppercase", marginBottom: 8 }}>Last {backtestResult.instances.length} Instances</div>
                     <div style={{ overflowX: "auto" }}>
