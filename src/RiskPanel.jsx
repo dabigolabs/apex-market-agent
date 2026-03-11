@@ -1,7 +1,5 @@
-export function RiskPanel({ BOR, G, Inp, R, S1, S2, Sel, Y, apiKeys, backtestLoading, backtestResult, backtestSym, backtestType, qp, runBacktestHandler, setBacktestSym, setBacktestType, view }) {
-  return (
-    <>
-
+export function RiskPanel({ BOR, Inp, S1, S2, Sel, apiKeys, backtestLoading, backtestResult, backtestSym, backtestType, qp, runBacktestHandler, setBacktestSym, setBacktestType, view }) {
+  return (<>
         {/* BACKTEST VIEW */}
         {view === "backtest" && (
           <div style={{ flex: 1, overflowY: "auto", padding: "16px" }}>
@@ -109,6 +107,5 @@ export function RiskPanel({ BOR, G, Inp, R, S1, S2, Sel, Y, apiKeys, backtestLoa
         )}
 
       </div>
-    </>
-  );
+  </>);
 }

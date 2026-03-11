@@ -2,10 +2,8 @@ import { useState } from 'react';
 import { mdRender } from './scoring';
 import { PreflightPanel } from './components';
 
-export function SimPanel({ BOR, G, Inp, R, S2, Y, addSimForm, addSimulation, bestFG, bestSession, calcRisk, getMemoryInsights, lastUpdated, livePrice, log, loss, manualCloseSim, newSim, next, pct, prices, qp, riskResult, riskVal, setAddSimForm, setNewSim, setRiskVal, setSimHistTab, setSimHistory, simHistTab, simHistory, simulations, view, wr }) {
-  return (
-    <>
-        {/* RISK CALC */}
+export function SimPanel({ BOR, Inp, S2, addSimForm, addSimulation, calcRisk, getMemoryInsights, lastUpdated, manualCloseSim, newSim, prices, qp, riskResult, riskVal, setAddSimForm, setNewSim, setRiskVal, setSimHistTab, setSimHistory, simHistTab, simHistory, simulations, view }) {
+  return (<>
         {view === "sim" && (() => {
           const wins = simHistory.filter(s => s.outcome === "WIN" || s.outcome === "PARTIAL_WIN");
           const losses = simHistory.filter(s => s.outcome === "LOSS");
@@ -358,6 +356,6 @@ export function SimPanel({ BOR, G, Inp, R, S2, Y, addSimForm, addSimulation, bes
           </div>
         )}
       </div>
-    </>
-  );
+
+  </>);
 }

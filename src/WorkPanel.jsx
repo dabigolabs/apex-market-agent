@@ -1,9 +1,7 @@
 import { ScanCard, SetupCard } from './components';
 
-export function WorkPanel({ BOR, Btn, G, Inp, R, S2, Y, addPForm, clearAll, clearDismissed, dismissSignal, favSignal, filteredAlerts, journal, journalForm, journalId, loss, markAllRead, newJ, newP, pct, portfolio, prices, qp, runStressTest, scanActive, scanAlerts, setAddPForm, setJournal, setJournalForm, setNewJ, setNewP, setPortfolio, setScanActive, setShowStressTest, setSignalFilter, showStressTest, signalFilter, signals, toast, view, wr }) {
-  return (
-    <>
-        {/* SIGNALS */}
+export function WorkPanel({ BOR, Btn, Inp, S2, addPForm, clearAll, clearDismissed, dismissSignal, favSignal, filteredAlerts, journal, journalForm, journalId, markAllRead, newJ, newP, pStats, portfolio, prices, qp, runStressTest, scanActive, scanAlerts, setAddPForm, setJournal, setJournalForm, setNewJ, setNewP, setPortfolio, setScanActive, setShowStressTest, setSignalFilter, showStressTest, signalFilter, toast, view }) {
+  return (<>
         {view === "signals" && (
           <div style={{ flex: 1, overflowY: "auto", padding: "18px 20px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
@@ -143,6 +141,6 @@ export function WorkPanel({ BOR, Btn, G, Inp, R, S2, Y, addPForm, clearAll, clea
           </div>
         )}
 
-    </>
-  );
+        {/* RISK CALC */}
+  </>);
 }

@@ -694,12 +694,9 @@ export default function APEX() {
       <LeftSidebar
         BG={BG}
           BOR={BOR}
-          G={G}
           Inp={Inp}
-          R={R}
           S1={S1}
           S2={S2}
-          Y={Y}
           addWForm={addWForm}
           addWatch={addWatch}
           fearGreed={fearGreed}
@@ -737,13 +734,9 @@ export default function APEX() {
         </div>
 
         {view === "chat" && <ChatPanel
-          B={B}
           BOR={BOR}
-          G={G}
-          R={R}
           S1={S1}
           S2={S2}
-          Y={Y}
           chatEnd={chatEnd}
           earningsData={earningsData}
           fundamentals={fundamentals}
@@ -767,11 +760,8 @@ export default function APEX() {
         {(view === "signals" || view === "portfolio" || view === "journal") && <WorkPanel
           BOR={BOR}
           Btn={Btn}
-          G={G}
           Inp={Inp}
-          R={R}
           S2={S2}
-          Y={Y}
           addPForm={addPForm}
           clearAll={clearAll}
           clearDismissed={clearDismissed}
@@ -806,23 +796,23 @@ export default function APEX() {
           view={view}
         />}
         {(view === "sim" || view === "stats" || view === "weekly") && <SimPanel
-          B={B}
           BOR={BOR}
-          G={G}
           Inp={Inp}
-          R={R}
           S2={S2}
-          Y={Y}
           addSimForm={addSimForm}
           addSimulation={addSimulation}
+          calcRisk={calcRisk}
           getMemoryInsights={getMemoryInsights}
           lastUpdated={lastUpdated}
           manualCloseSim={manualCloseSim}
           newSim={newSim}
           prices={prices}
           qp={qp}
+          riskResult={riskResult}
+          riskVal={riskVal}
           setAddSimForm={setAddSimForm}
           setNewSim={setNewSim}
+          setRiskVal={setRiskVal}
           setSimHistTab={setSimHistTab}
           setSimHistory={setSimHistory}
           simHistTab={simHistTab}
@@ -832,41 +822,30 @@ export default function APEX() {
         />}
         {(view === "risk" || view === "backtest") && <RiskPanel
           BOR={BOR}
-          G={G}
           Inp={Inp}
-          R={R}
           S1={S1}
           S2={S2}
           Sel={Sel}
-          Y={Y}
           apiKeys={apiKeys}
           backtestLoading={backtestLoading}
           backtestResult={backtestResult}
           backtestSym={backtestSym}
           backtestType={backtestType}
-          calcRisk={calcRisk}
           qp={qp}
-          riskResult={riskResult}
-          riskVal={riskVal}
           runBacktestHandler={runBacktestHandler}
           setBacktestSym={setBacktestSym}
           setBacktestType={setBacktestType}
-          setRiskVal={setRiskVal}
           view={view}
         />}
       </div>
 
       <RightSidebar
-        B={B}
-          BOR={BOR}
+        BOR={BOR}
           Btn={Btn}
-          G={G}
           Inp={Inp}
-          R={R}
           S1={S1}
           S2={S2}
           Sel={Sel}
-          Y={Y}
           addAForm={addAForm}
           alertId={alertId}
           cpi={cpi}

@@ -2,10 +2,8 @@ import { useRef, useEffect } from 'react';
 import { mdRender } from './scoring';
 import { GlossaryTip, SetupCard } from './components';
 
-export function ChatPanel({ BOR, G, R, S1, S2, Y, chatEnd, earningsData, fundamentals, hasKey, indicators, input, launchSimFromSetup, loading, messages, next, onImg, pendingImg, preflightScore, prices, qp, send, setInput, setPendingImg, setShowSettings, theme, view }) {
-  return (
-    <>
-        {/* CHAT */}
+export function ChatPanel({ BOR, S1, S2, chatEnd, earningsData, fundamentals, hasKey, indicators, input, launchSimFromSetup, loading, messages, onImg, pendingImg, preflightScore, prices, qp, send, setInput, setPendingImg, setShowSettings, view }) {
+  return (<>
         {view === "chat" && <>
           <div style={{ flex: 1, overflowY: "auto", padding: "18px 20px" }}>
             {messages.length === 0 && (
@@ -119,6 +117,6 @@ export function ChatPanel({ BOR, G, R, S1, S2, Y, chatEnd, earningsData, fundame
           </div>
         </>}
 
-    </>
-  );
+        {/* SIGNALS */}
+  </>);
 }
