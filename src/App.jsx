@@ -724,18 +724,15 @@ export default function APEX() {
 
       <LeftSidebar ctx={ctx} />
 
-            <div style={{ display: "flex", flexDirection: "column", overflow: "hidden", background: BG }}>
+      <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden", background: BG }}>
         <div style={{ display: "flex", gap: 2, padding: "7px 14px 0", borderBottom: `1px solid ${BOR}`, background: S1 }}>
-                    {[{ id: "chat", l: "💬 Chat" }, { id: "signals", l: "⬡ Signals" }, { id: "portfolio", l: "◈ Portfolio" }, { id: "journal", l: "◉ Journal" }, { id: "sim", l: "⚗ Sim" }, { id: "risk", l: "◇ Risk" }, { id: "backtest", l: "⌖ Test" }].map(t => (
+          {[{ id: "chat", l: "💬 Chat" }, { id: "signals", l: "⬡ Signals" }, { id: "portfolio", l: "◈ Portfolio" }, { id: "journal", l: "◉ Journal" }, { id: "sim", l: "⚗ Sim" }, { id: "risk", l: "◇ Risk" }, { id: "backtest", l: "⌖ Test" }].map(t => (
             <div key={t.id} onClick={() => { setView(t.id); if (t.id === "signals") markAllRead(); }}
               style={{ padding: "6px 12px", borderRadius: "6px 6px 0 0", fontSize: 11, fontWeight: 500, cursor: "pointer", color: view === t.id ? G : "#2a4050", background: view === t.id ? BG : "transparent", border: view === t.id ? `1px solid ${BOR}` : "1px solid transparent", borderBottom: view === t.id ? `1px solid ${BG}` : "1px solid transparent", marginBottom: -1, transition: ".15s", whiteSpace: "nowrap" }}>
               {t.l}
             </div>
           ))}
         </div>
-
-        </div>
-
         {view === "chat" && <ChatPanel ctx={ctx} />}
         {(view === "signals" || view === "portfolio" || view === "journal") && <WorkPanel ctx={ctx} />}
         {(view === "sim" || view === "stats" || view === "weekly") && <SimPanel ctx={ctx} />}
