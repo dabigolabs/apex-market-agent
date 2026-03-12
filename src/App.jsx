@@ -582,7 +582,7 @@ export default function APEX() {
     getMemoryInsights, saveKeys, chatEnd, notifCount,
     dataLoading, scanning, apiBalance, apiCostLog,
     Btn, Inp, Sel, filteredAlerts, journalId, pStats,
-    scanning, showCostPanel, setShowCostPanel, tagBg, tagC,
+    showCostPanel, setShowCostPanel, tagBg, tagC,
   };
 
   return (
