@@ -1,4 +1,7 @@
-export function RiskPanel({ BOR, Inp, S1, S2, Sel, apiKeys, backtestLoading, backtestResult, backtestSym, backtestType, qp, runBacktestHandler, setBacktestSym, setBacktestType, view }) {
+
+
+export function RiskPanel({ ctx }) {
+  const { BOR, G, Inp, R, S1, S2, Sel, Y, apiKeys, backtestLoading, backtestResult, backtestSym, backtestType, qp, runBacktestHandler, setBacktestSym, setBacktestType, view } = ctx;
   return (<>
         {/* BACKTEST VIEW */}
         {view === "backtest" && (
@@ -103,9 +106,8 @@ export function RiskPanel({ BOR, Inp, S1, S2, Sel, apiKeys, backtestLoading, bac
                 <div style={{ color: "#4a6070", fontFamily: "monospace", fontSize: 10, marginTop: 6 }}>Try a different setup type or symbol with more trading history.</div>
               </div>
             )}
-          </div>
         )}
 
       </div>
-  </>);
+    </>);
 }
