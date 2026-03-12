@@ -554,6 +554,37 @@ export default function APEX() {
   ];
 
 
+  const ctx = {
+    BG, BOR, G, R, Y, S1, S2,
+    view, setView, messages, setMessages, input, setInput,
+    loading, setLoading, signals, favs, watchlist, setWatchlist,
+    prices, setPrices, indicators, fundamentals, earningsData,
+    news, setNews, fearGreed, fredData, globalMarkets,
+    portfolio, setPortfolio, journal, setJournal,
+    simulations, setSimulations, simHistory, setSimHistory,
+    simHistTab, setSimHistTab, newSim, setNewSim, addSimForm, setAddSimForm,
+    backtestSym, setBacktestSym, backtestType, setBacktestType,
+    backtestResult, backtestLoading, riskVal, setRiskVal, riskResult,
+    scanAlerts, setScanAlerts, scanActive, setScanActive,
+    preflightScore, apiKeys, hasKey, lastUpdated,
+    showStressTest, setShowStressTest, signalFilter, setSignalFilter,
+    toasts, setToasts, showSettings: false, setShowSettings,
+    newJ, setNewJ, journalForm, setJournalForm,
+    newP, setNewP, addPForm, setAddPForm,
+    rpTab, setRpTab, priceAlerts, setPriceAlerts,
+    newA, setNewA, addAForm, setAddAForm, alertId,
+    marketSession, theme, livePrice, bestFG, bestSession,
+    macroDisplay, cpi, apexMemory,
+    send, qp, perfectSetup, setupLoading, onImg, pendingImg,
+    toast, markAllRead, dismissSignal, favSignal, clearAll, clearDismissed,
+    addSimulation, manualCloseSim, launchSimFromSetup,
+    calcRisk, runStressTest, runBacktestHandler,
+    getMemoryInsights, saveKeys, chatEnd, notifCount,
+    dataLoading, scanning, apiBalance, apiCostLog,
+    Btn, Inp, Sel, filteredAlerts, journalId, pStats,
+    scanning, showCostPanel, setShowCostPanel, tagBg, tagC,
+  };
+
   return (
         <div style={{ display: "grid", gridTemplateColumns: "195px 1fr 252px", gridTemplateRows: "52px 1fr", height: "100vh", background: BG, color: "#c8d8e8", fontFamily: "system-ui,sans-serif", fontSize: 13, overflow: "hidden" }}>
             <style>{`
@@ -691,39 +722,11 @@ export default function APEX() {
       </div>
 
 
-      <LeftSidebar
-        BG={BG}
-        BOR={BOR}
-        Inp={Inp}
-        S1={S1}
-        S2={S2}
-        addWForm={addWForm}
-        addWatch={addWatch}
-        fearGreed={fearGreed}
-        hasKey={hasKey}
-        journal={journal}
-        loading={loading}
-        macroDisplay={macroDisplay}
-        markAllRead={markAllRead}
-        newW={newW}
-        notifCount={notifCount}
-        perfectSetup={perfectSetup}
-        portfolio={portfolio}
-        prices={prices}
-        qp={qp}
-        setAddWForm={setAddWForm}
-        setNewW={setNewW}
-        setShowSettings={setShowSettings}
-        setView={setView}
-        setWatchlist={setWatchlist}
-        setupLoading={setupLoading}
-        view={view}
-        watchlist={watchlist}
-      />
+      <LeftSidebar ctx={ctx} />
 
             <div style={{ display: "flex", flexDirection: "column", overflow: "hidden", background: BG }}>
         <div style={{ display: "flex", gap: 2, padding: "7px 14px 0", borderBottom: `1px solid ${BOR}`, background: S1 }}>
-          {[{ id: "chat", l: "💬 Chat" }, { id: "signals", l: "⬡ Signals" }, { id: "portfolio", l: "◈ Portfolio" }, { id: "journal", l: "◉ Journal" }, { id: "sim", l: "⚗ Sim" }, { id: "risk", l: "◇ Risk" }, { id: "backtest", l: "⌖ Test" }].map(t => (
+                    {[{ id: "chat", l: "💬 Chat" }, { id: "signals", l: "⬡ Signals" }, { id: "portfolio", l: "◈ Portfolio" }, { id: "journal", l: "◉ Journal" }, { id: "sim", l: "⚗ Sim" }, { id: "risk", l: "◇ Risk" }, { id: "backtest", l: "⌖ Test" }].map(t => (
             <div key={t.id} onClick={() => { setView(t.id); if (t.id === "signals") markAllRead(); }}
               style={{ padding: "6px 12px", borderRadius: "6px 6px 0 0", fontSize: 11, fontWeight: 500, cursor: "pointer", color: view === t.id ? G : "#2a4050", background: view === t.id ? BG : "transparent", border: view === t.id ? `1px solid ${BOR}` : "1px solid transparent", borderBottom: view === t.id ? `1px solid ${BG}` : "1px solid transparent", marginBottom: -1, transition: ".15s", whiteSpace: "nowrap" }}>
               {t.l}
@@ -733,151 +736,13 @@ export default function APEX() {
 
         </div>
 
-        {view === "chat" && (
-      <ChatPanel
-        BOR={BOR}
-        S1={S1}
-        S2={S2}
-        chatEnd={chatEnd}
-        earningsData={earningsData}
-        fundamentals={fundamentals}
-        hasKey={hasKey}
-        indicators={indicators}
-        input={input}
-        launchSimFromSetup={launchSimFromSetup}
-        loading={loading}
-        messages={messages}
-        onImg={onImg}
-        pendingImg={pendingImg}
-        preflightScore={preflightScore}
-        prices={prices}
-        qp={qp}
-        send={send}
-        setInput={setInput}
-        setPendingImg={setPendingImg}
-        setShowSettings={setShowSettings}
-        view={view}
-      />
-        )}
-        {(view === "signals" || view === "portfolio" || view === "journal") && (
-      <WorkPanel
-        BOR={BOR}
-        Btn={Btn}
-        Inp={Inp}
-        S2={S2}
-        addPForm={addPForm}
-        clearAll={clearAll}
-        clearDismissed={clearDismissed}
-        dismissSignal={dismissSignal}
-        favSignal={favSignal}
-        filteredAlerts={filteredAlerts}
-        journal={journal}
-        journalForm={journalForm}
-        journalId={journalId}
-        markAllRead={markAllRead}
-        newJ={newJ}
-        newP={newP}
-        pStats={pStats}
-        portfolio={portfolio}
-        prices={prices}
-        qp={qp}
-        runStressTest={runStressTest}
-        scanActive={scanActive}
-        scanAlerts={scanAlerts}
-        setAddPForm={setAddPForm}
-        setJournal={setJournal}
-        setJournalForm={setJournalForm}
-        setNewJ={setNewJ}
-        setNewP={setNewP}
-        setPortfolio={setPortfolio}
-        setScanActive={setScanActive}
-        setShowStressTest={setShowStressTest}
-        setSignalFilter={setSignalFilter}
-        showStressTest={showStressTest}
-        signalFilter={signalFilter}
-        toast={toast}
-        view={view}
-      />
-        )}
-        {(view === "sim" || view === "stats" || view === "weekly") && (
-      <SimPanel
-        BOR={BOR}
-        Inp={Inp}
-        S2={S2}
-        addSimForm={addSimForm}
-        addSimulation={addSimulation}
-        calcRisk={calcRisk}
-        getMemoryInsights={getMemoryInsights}
-        lastUpdated={lastUpdated}
-        manualCloseSim={manualCloseSim}
-        newSim={newSim}
-        prices={prices}
-        qp={qp}
-        riskResult={riskResult}
-        riskVal={riskVal}
-        setAddSimForm={setAddSimForm}
-        setNewSim={setNewSim}
-        setRiskVal={setRiskVal}
-        setSimHistTab={setSimHistTab}
-        setSimHistory={setSimHistory}
-        simHistTab={simHistTab}
-        simHistory={simHistory}
-        simulations={simulations}
-        view={view}
-      />
-        )}
-        {(view === "risk" || view === "backtest") && (
-      <RiskPanel
-        BOR={BOR}
-        Inp={Inp}
-        S1={S1}
-        S2={S2}
-        Sel={Sel}
-        apiKeys={apiKeys}
-        backtestLoading={backtestLoading}
-        backtestResult={backtestResult}
-        backtestSym={backtestSym}
-        backtestType={backtestType}
-        qp={qp}
-        runBacktestHandler={runBacktestHandler}
-        setBacktestSym={setBacktestSym}
-        setBacktestType={setBacktestType}
-        view={view}
-      />
-        )}
+        {view === "chat" && <ChatPanel ctx={ctx} />}
+        {(view === "signals" || view === "portfolio" || view === "journal") && <WorkPanel ctx={ctx} />}
+        {(view === "sim" || view === "stats" || view === "weekly") && <SimPanel ctx={ctx} />}
+        {(view === "risk" || view === "backtest") && <RiskPanel ctx={ctx} />}
       </div>
 
-      <RightSidebar
-        BOR={BOR}
-        Btn={Btn}
-        Inp={Inp}
-        S1={S1}
-        S2={S2}
-        Sel={Sel}
-        addAForm={addAForm}
-        alertId={alertId}
-        cpi={cpi}
-        fredData={fredData}
-        getMemoryInsights={getMemoryInsights}
-        globalMarkets={globalMarkets}
-        hasKey={hasKey}
-        macroDisplay={macroDisplay}
-        marketSession={marketSession}
-        newA={newA}
-        news={news}
-        priceAlerts={priceAlerts}
-        prices={prices}
-        qp={qp}
-        rpTab={rpTab}
-        setAddAForm={setAddAForm}
-        setNewA={setNewA}
-        setPriceAlerts={setPriceAlerts}
-        setRpTab={setRpTab}
-        setShowSettings={setShowSettings}
-        tagBg={tagBg}
-        tagC={tagC}
-        toast={toast}
-      />
+      <RightSidebar ctx={ctx} />
     </div>
   );
 }
