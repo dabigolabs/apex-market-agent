@@ -358,6 +358,6 @@ export function SimPanel({ ctx }) {
         )}
       </div>
 
-  </>
+  </div>
   );
-}
+}
