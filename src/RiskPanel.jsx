@@ -35,7 +35,7 @@ export function RiskPanel({ ctx }) {
             </div>
 
             {backtestResult && backtestResult.summary && (
-              <>
+              <div style={{display:"contents"}}>
                 {/* Summary Stats */}
                 <div style={{ background: "rgba(0,229,160,.06)", border: "1px solid rgba(0,229,160,.2)", borderRadius: 11, padding: "14px", marginBottom: 12 }}>
                   <div style={{ fontFamily: "monospace", fontSize: 8, color: G, letterSpacing: 2, textTransform: "uppercase", marginBottom: 10 }}>📊 Backtest Results — {backtestSym}</div>
@@ -96,7 +96,7 @@ export function RiskPanel({ ctx }) {
                     </div>
                   </div>
                 )}
-              </>
+              </div>
             )}
 
             {backtestResult && !backtestResult.summary && (
@@ -108,5 +108,6 @@ export function RiskPanel({ ctx }) {
         )}
 
       </div>
-  </div>);
+  </div>
+  );
 }
