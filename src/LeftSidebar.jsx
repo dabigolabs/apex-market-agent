@@ -1,8 +1,8 @@
 import { PreflightPanel, GlossaryTip, SetupCard } from './components';
 
-export function LeftSidebar({ BG, BOR, Inp, S1, S2, addWForm, addWatch, fearGreed, hasKey, journal, loading, macroDisplay, markAllRead, newW, notifCount, perfectSetup, portfolio, prices, qp, setAddWForm, setNewW, setShowSettings, setView, setWatchlist, setupLoading, view, watchlist }) {
+export function LeftSidebar({ ctx }) {
+  const { BG, BOR, G, Inp, R, S1, S2, Y, addWForm, addWatch, fearGreed, hasKey, journal, loading, macroDisplay, markAllRead, newW, notifCount, perfectSetup, portfolio, prices, qp, setAddWForm, setNewW, setShowSettings, setView, setWatchlist, setupLoading, view, watchlist } = ctx;
   return (
-      {/* LEFT SIDEBAR */}
       <div style={{ background: S1, borderRight: `1px solid ${BOR}`, display: "flex", flexDirection: "column", overflow: "hidden" }}>
         <div style={{ padding: "10px 10px 8px" }}>
           <button className="pfbtn pbtn" onClick={perfectSetup} disabled={setupLoading || loading}
@@ -77,5 +77,5 @@ export function LeftSidebar({ BG, BOR, Inp, S1, S2, addWForm, addWatch, fearGree
         </div>
       </div>
 
-  );
+    );
 }
