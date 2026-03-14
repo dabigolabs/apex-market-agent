@@ -1,8 +1,8 @@
 import { ScanCard } from './components';
 
-export function RightSidebar({ BOR, Btn, Inp, S1, S2, Sel, addAForm, alertId, cpi, fredData, getMemoryInsights, globalMarkets, hasKey, macroDisplay, marketSession, newA, news, priceAlerts, prices, qp, rpTab, setAddAForm, setNewA, setPriceAlerts, setRpTab, setShowSettings, tagBg, tagC, toast }) {
+export function RightSidebar({ ctx }) {
+  const { BOR, Btn, G, Inp, R, S1, S2, Sel, Y, addAForm, alertId, cpi, fredData, getMemoryInsights, globalMarkets, hasKey, macroDisplay, marketSession, newA, news, priceAlerts, prices, qp, rpTab, setAddAForm, setNewA, setPriceAlerts, setRpTab, setShowSettings, tagBg, tagC, toast } = ctx;
   return (
-      {/* RIGHT SIDEBAR */}
       <div style={{ background: S1, borderLeft: `1px solid ${BOR}`, display: "flex", flexDirection: "column", overflow: "hidden" }}>
         <div style={{ display: "flex", borderBottom: `1px solid ${BOR}` }}>
           {[{ id: "news", l: "NEWS" }, { id: "alerts", l: "ALERTS" }, { id: "macro", l: "MACRO" }, { id: "global", l: "🌐 GLOBAL" }].map(t => (
@@ -172,5 +172,5 @@ export function RightSidebar({ BOR, Btn, Inp, S1, S2, Sel, addAForm, alertId, cp
           </div>
         )}
       </div>
-  );
+    );
 }
