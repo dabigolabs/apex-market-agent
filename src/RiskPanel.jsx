@@ -2,7 +2,7 @@
 
 export function RiskPanel({ ctx }) {
   const { BOR, G, Inp, R, S1, S2, Sel, Y, apiKeys, backtestLoading, backtestResult, backtestSym, backtestType, qp, runBacktestHandler, setBacktestSym, setBacktestType, view } = ctx;
-  return (<>
+  return (<div style={{display:"contents"}}>
         {/* BACKTEST VIEW */}
         {view === "backtest" && (
           <div style={{ flex: 1, overflowY: "auto", padding: "16px" }}>
@@ -109,5 +109,5 @@ export function RiskPanel({ ctx }) {
         )}
 
       </div>
-    </>);
+  </div>);
 }
