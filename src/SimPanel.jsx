@@ -4,7 +4,7 @@ import { PreflightPanel } from './components';
 
 export function SimPanel({ ctx }) {
   const { BOR, G, Inp, R, S2, Y, addSimForm, addSimulation, calcRisk, getMemoryInsights, lastUpdated, manualCloseSim, newSim, prices, qp, riskResult, riskVal, setAddSimForm, setNewSim, setRiskVal, setSimHistTab, setSimHistory, simHistTab, simHistory, simulations, view } = ctx;
-  return (<>
+  return (<div style={{display:"contents"}}>
         {view === "sim" && (() => {
           const wins = simHistory.filter(s => s.outcome === "WIN" || s.outcome === "PARTIAL_WIN");
           const losses = simHistory.filter(s => s.outcome === "LOSS");
