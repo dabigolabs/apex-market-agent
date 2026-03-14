@@ -84,7 +84,7 @@ export function WorkPanel({ ctx }) {
                         ))}
                       </div>
                     </div>
-                  );
+  );
                 })}
                 <button onClick={() => qp(`Stress test my portfolio: ${portfolio.map(p => `${p.sym} ${p.shares}sh @$${p.entry}`).join(", ")}. If market drops 10%, which positions are most at risk? Should I hedge? How?`)} style={{ width: "100%", padding: "7px", borderRadius: 7, background: "transparent", border: `1px solid rgba(255,68,102,.3)`, color: R, fontSize: 10, cursor: "pointer", fontFamily: "monospace", marginTop: 4 }}>
                   🤖 Get AI Hedge Recommendations
@@ -143,5 +143,6 @@ export function WorkPanel({ ctx }) {
         )}
 
         {/* RISK CALC */}
-  </div>);
+  </div>
+  );
 }
