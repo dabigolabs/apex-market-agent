@@ -95,7 +95,7 @@ export function ChatPanel({ ctx }) {
                     </div> : <div dangerouslySetInnerHTML={{ __html: mdRender(m.text) }} />}
                   </div>
                 </div>
-              );
+  );
             })}
             {loading && <div style={{ display: "flex", gap: 9, marginBottom: 14 }}><div style={{ width: 27, height: 27, background: `linear-gradient(135deg,${G},${B})`, borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, flexShrink: 0 }}>⬡</div><div style={{ background: S1, border: `1px solid ${BOR}`, borderRadius: "3px 14px 14px 14px", padding: "10px 14px", display: "flex", gap: 4, alignItems: "center" }}>{[0, 1, 2].map(i => <div key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: G, animation: `tdot 1.2s ease ${i * .2}s infinite` }} />)}<span style={{ fontFamily: "monospace", fontSize: 10, color: "#2a4050", marginLeft: 6 }}>Analyzing with live data...</span></div></div>}
             <div ref={chatEnd} />
@@ -119,5 +119,6 @@ export function ChatPanel({ ctx }) {
         </>}
 
         {/* SIGNALS */}
-  </div>);
+  </div>
+  );
 }
