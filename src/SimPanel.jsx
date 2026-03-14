@@ -59,7 +59,7 @@ export function SimPanel({ ctx }) {
 
               {/* ACTIVE TAB */}
               {simHistTab === "active" && (
-                <>
+                <div style={{display:"contents"}}>
                   {simulations.length === 0 && !addSimForm && (
                     <div style={{ textAlign: "center", padding: "50px 20px", color: "#2a4050", fontFamily: "monospace" }}>
                       <div style={{ fontSize: 28, marginBottom: 12 }}>⚗</div>
@@ -126,14 +126,14 @@ export function SimPanel({ ctx }) {
                           <button onClick={() => manualCloseSim(sim, "MANUAL_LOSS")} style={{ fontSize: 10, fontFamily: "monospace", background: "rgba(255,68,102,.08)", border: `1px solid ${R}44`, color: R, padding: "4px 9px", borderRadius: 5, cursor: "pointer" }}>✗ Loss</button>
                         </div>
                       </div>
-                    );
+  );
                   })}
-                </>
+                </div>
               )}
 
               {/* HISTORY TAB */}
               {simHistTab === "history" && (
-                <>
+                <div style={{display:"contents"}}>
                   {simHistory.length === 0 && <div style={{ textAlign: "center", padding: "50px 20px", color: "#2a4050", fontFamily: "monospace", fontSize: 12 }}>No closed trades yet. Results will appear here automatically.</div>}
                   {[...simHistory].reverse().map((sim, i) => {
                     const pnl = parseFloat(sim.pnl);
@@ -159,18 +159,18 @@ export function SimPanel({ ctx }) {
                         </div>
                         <div style={{ fontSize: 9, fontFamily: "monospace", color: "#162030", marginTop: 6 }}>{sim.archivedAt}</div>
                       </div>
-                    );
+  );
                   })}
                   {simHistory.length > 0 && <button onClick={() => { if (window.confirm("Clear all history?")) setSimHistory([]); }} style={{ width: "100%", padding: "8px", borderRadius: 8, background: "transparent", border: `1px solid ${BOR}`, color: "#2a4050", fontSize: 11, cursor: "pointer", fontFamily: "monospace", marginTop: 4 }}>🗑 Clear History</button>}
-                </>
+                </div>
               )}
 
               {/* STATS / ANALYTICS TAB */}
               {simHistTab === "stats" && (
-                <>
+                <div style={{display:"contents"}}>
                   {total === 0 && <div style={{ textAlign: "center", padding: "50px 20px", color: "#2a4050", fontFamily: "monospace", fontSize: 12 }}>No data yet. Complete some simulations to see analytics.</div>}
                   {total > 0 && (
-                    <>
+                    <div style={{display:"contents"}}>
                       {/* Win Rate Gauge */}
                       <div style={{ background: "linear-gradient(135deg,rgba(0,229,160,.07),rgba(0,170,255,.04))", border: `1px solid rgba(0,229,160,.2)`, borderRadius: 12, padding: "18px", marginBottom: 14, textAlign: "center" }}>
                         <div style={{ fontSize: 9, fontFamily: "monospace", color: "#2a4050", textTransform: "uppercase", letterSpacing: 2, marginBottom: 8 }}>APEX Tool Success Rate</div>
@@ -271,20 +271,20 @@ export function SimPanel({ ctx }) {
                       <button onClick={() => qp(`Based on my trading history — ${total} trades, ${winRate}% win rate, avg win $${avgWin}, avg loss $${avgLoss} — give me a complete post-trade AI debrief. What patterns do you see? What should I change? What am I doing right? Be specific and actionable.`)} style={{ width: "100%", padding: "9px", borderRadius: 9, background: "rgba(0,229,160,.08)", border: `1px solid rgba(0,229,160,.2)`, color: G, fontSize: 11, cursor: "pointer", fontFamily: "monospace", marginTop: 12 }}>
                         🤖 Get AI Performance Debrief
                       </button>
-                    </>
+                    </div>
                   )}
-                </>
+                </div>
               )}
 
               {/* WEEKLY REPORT TAB */}
               {simHistTab === "report" && (
-                <>
+                <div style={{display:"contents"}}>
                   <div style={{ background: "linear-gradient(135deg,rgba(0,229,160,.07),rgba(0,170,255,.04))", border: `1px solid rgba(0,229,160,.2)`, borderRadius: 12, padding: "16px", marginBottom: 14 }}>
                     <div style={{ fontSize: 9, fontFamily: "monospace", color: G, textTransform: "uppercase", letterSpacing: 2, marginBottom: 8 }}>📋 Weekly Performance Report</div>
                     {total === 0 ? (
                       <div style={{ textAlign: "center", padding: "20px", color: "#2a4050", fontFamily: "monospace", fontSize: 11 }}>Complete some simulations to generate your weekly report.</div>
                     ) : (
-                      <>
+                      <div style={{display:"contents"}}>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8, marginBottom: 12 }}>
                           {[{ l: "This Week", v: total + " trades", c: "#c8d8e8" }, { l: "Net P&L", v: `${totalPnl >= 0 ? "+" : ""}$${totalPnl.toFixed(0)}`, c: totalPnl >= 0 ? G : R }, { l: "Win Rate", v: `${winRate}%`, c: parseFloat(winRate) >= 60 ? G : Y }].map(({ l, v, c }) => (
                             <div key={l} style={{ background: "rgba(0,0,0,.3)", borderRadius: 8, padding: "10px", textAlign: "center" }}>
@@ -301,7 +301,7 @@ export function SimPanel({ ctx }) {
                         <button onClick={() => qp(`Generate my complete weekly trading report. Stats: ${total} trades, ${winRate}% win rate, net P&L $${totalPnl.toFixed(0)}, avg win $${avgWin}, avg loss $${avgLoss}. Best: ${bestTrade?.sym || "none"} (+$${parseFloat(bestTrade?.pnl || 0).toFixed(0)}). What worked, what didn't, what to focus on next week?`)} style={{ width: "100%", padding: "9px", borderRadius: 9, background: "rgba(0,229,160,.1)", border: `1px solid rgba(0,229,160,.25)`, color: G, fontSize: 11, cursor: "pointer", fontFamily: "monospace" }}>
                           ⬡ Generate AI Weekly Report
                         </button>
-                      </>
+                      </div>
                     )}
                   </div>
 
@@ -318,12 +318,12 @@ export function SimPanel({ ctx }) {
                           {insights.bestSession && <div>Most wins during <span style={{ color: G, fontFamily: "monospace" }}>{insights.bestSession}</span> sessions</div>}
                         </div>
                       </div>
-                    );
+  );
                   })()}
-                </>
+                </div>
               )}
             </div>
-          );
+  );
         })()}
         {view === "risk" && (
           <div style={{ flex: 1, overflowY: "auto", padding: "18px 20px" }}>
@@ -358,5 +358,6 @@ export function SimPanel({ ctx }) {
         )}
       </div>
 
-  </div>);
+  </div>
+  );
 }
