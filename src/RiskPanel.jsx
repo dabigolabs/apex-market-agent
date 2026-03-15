@@ -109,6 +109,8 @@ export function RiskPanel({ ctx }) {
         )}
 
 
+      </div>
+
       {/* end RiskPanel */}
   </>
   );
