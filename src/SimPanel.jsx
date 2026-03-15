@@ -356,6 +356,9 @@ export function SimPanel({ ctx }) {
             </div>
           </div>
         )}
+      </div>
+      </div>
+      </div>
 
       {/* end SimPanel */}
   </>
