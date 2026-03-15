@@ -1,8 +1,9 @@
+import React from 'react';
 
 
 export function RiskPanel({ ctx }) {
   const { BOR, G, Inp, R, S1, S2, Sel, Y, apiKeys, backtestLoading, backtestResult, backtestSym, backtestType, qp, runBacktestHandler, setBacktestSym, setBacktestType, view } = ctx;
-  return (<div style={{display:"contents"}}>
+  return (<>
         {view === "backtest" && (
           <div style={{ flex: 1, overflowY: "auto", padding: "16px" }}>
             <div style={{ fontFamily: "monospace", fontSize: 9, letterSpacing: 3, color: "#2a4050", textTransform: "uppercase", marginBottom: 16 }}>Historical Setup Backtester</div>
@@ -107,7 +108,8 @@ export function RiskPanel({ ctx }) {
             )}
         )}
 
-      </div>
-  </div>
+
+      {/* end RiskPanel */}
+  </>
   );
 }
